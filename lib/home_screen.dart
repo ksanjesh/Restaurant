@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int index = 0;
+  int _currentIndex = 0;
   List<String> images = [
     "https://img.freepik.com/free-photo/chicken-wings-barbecue-sweetly-sour-sauce-picnic-summer-menu-tasty-food-top-view-flat-lay_2829-6471.jpg?w=2000",
     "https://media.istockphoto.com/photos/table-top-view-of-spicy-food-picture-id1316145932?b=1&k=20&m=1316145932&s=170667a&w=0&h=feyrNSTglzksHoEDSsnrG47UoY_XX4PtayUPpSMunQI=",
@@ -34,25 +34,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffeeeeee),
+      backgroundColor: const Color(0xffeeeeee),
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text("Indian food"),
+        title: const Text("Indian food"),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
         ],
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.red[200],
         showUnselectedLabels: true,
         onTap: (index) {
           setState(() {
+            _currentIndex = index;
             print(index);
           });
         },
-        currentIndex: index,
+        currentIndex: _currentIndex,
         backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         items: const [
@@ -75,8 +76,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (BuildContext context) {
                   return Container(
                       width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(horizontal: 8.0),
-                      decoration: BoxDecoration(color: Colors.amber),
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      decoration: const BoxDecoration(color: Colors.amber),
                       child: Image.network(
                         i,
                         fit: BoxFit.cover,
@@ -108,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontSize: 24,
                 ),
               ),
-              TextButton(onPressed: () {}, child: Text("see more..."))
+              TextButton(onPressed: () {}, child: const Text("see more..."))
             ],
           ),
         ),
